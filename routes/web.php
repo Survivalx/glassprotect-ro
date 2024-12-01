@@ -7,7 +7,8 @@ Route::get('/', function () {
     return view('app');
 });
 
-Route::view('/' , 'app');
+Route::view('/' , 'app')->name('home');
+Route::view('/about' , 'pages.about')->name('page.about');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
