@@ -1,5 +1,6 @@
 <head>
     @vite('resources/css/app.css')
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <div class="w-11/12 border-x-gray-500 border-x-2 m-auto">
     <header class="py-2 flex justify-between items-center">
