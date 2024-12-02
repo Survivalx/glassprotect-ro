@@ -8,7 +8,7 @@
     <header class="py-2 flex justify-between items-center">
         <div>
             <a href="{{ route('home') }}">
-                <img inert src={{ asset('images/GLASSPROTECT.svg') }} alt="">
+                <img inert class="h-16" src={{ asset('images/glass-protect-original.png') }} alt="">
             </a>
         </div>
         <div class="menu space-x-1">
