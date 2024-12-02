@@ -1,0 +1,25 @@
+<svg width="68" height="64" viewBox="0 0 68 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 13H3V64H0V13Z" fill="white"/>
+<path d="M3 13H48V16H3V13Z" fill="white"/>
+<path d="M7 7H55.5L55 10H7V7Z" fill="white"/>
+<path d="M13 0H64V3H13V0Z" fill="white"/>
+<path d="M48 13L64 0V3L48 16V13Z" fill="white"/>
+<path d="M13 3H16V7H13V3Z" fill="white"/>
+<path d="M13 10H16V13H13V10Z" fill="white"/>
+<path d="M7 10H10V13H7V10Z" fill="white"/>
+<path d="M7 16H10V57H7V16Z" fill="white"/>
+<path d="M10 54H58V57H10V54Z" fill="white"/>
+<path d="M3 61H52V64H3V61Z" fill="white"/>
+<path d="M49 57H52V61H49V57Z" fill="white"/>
+<path d="M49 39H52V54H49V39Z" fill="white"/>
+<path d="M55 32H58V54H55V32Z" fill="white"/>
+<path d="M61 26H64V51H61V26Z" fill="white"/>
+<path d="M13 48H61V51H13V48Z" fill="white"/>
+<path d="M24 39L39 25V28L32 35.5L25 42L24 39Z" fill="white"/>
+<path d="M39 25L64.0001 25V28L39 28V25Z" fill="white"/>
+<path d="M32 32H55V35H32V32Z" fill="white"/>
+<path d="M24 39H49V42H24V39Z" fill="white"/>
+<path d="M13 16H16V48H13V16Z" fill="white"/>
+<path d="M21 42L24 39V42H21Z" fill="white"/>
+<path d="M64 0H67.5L64 3V0Z" fill="white"/>
+</svg>

@@ -1,3 +1,3 @@
 <x-layout>
-    About Page
+    Contact Page
 </x-layout>

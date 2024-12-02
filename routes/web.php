@@ -9,7 +9,14 @@ Route::get('/', function () {
 
 Route::view('/' , 'app')->name('home');
 Route::view('/about' , 'pages.about')->name('page.about');
+Route::view('/products', 'pages.products')->name('page.products');
+Route::view('/projects', 'pages.projects');
+Route::view('/blog', 'pages.blog');
+Route::view('/contact', 'pages.contact');
+Route::view('/policies', 'pages.policies');
 
+
+// default routes middleware breeze auth
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

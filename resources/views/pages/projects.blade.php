@@ -1,3 +1,3 @@
 <x-layout>
-    About Page
+    Project Pages
 </x-layout>

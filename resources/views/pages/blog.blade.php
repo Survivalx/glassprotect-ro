@@ -1,3 +1,3 @@
 <x-layout>
-    About Page
+    Blog page
 </x-layout>

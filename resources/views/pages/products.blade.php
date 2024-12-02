@@ -1,3 +1,3 @@
 <x-layout>
-    About Page
+    product page
 </x-layout>
