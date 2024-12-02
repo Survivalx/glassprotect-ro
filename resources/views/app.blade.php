@@ -11,10 +11,8 @@
         <img class="w-1/2 h-[450px] object-cover rounded-xl" src="{{ asset('images/balustrada1.jpg') }}" alt="">
     </div>
     <div class="mt-28 space-y-6">
-        <h1 class="text-2xl font-semibold w-4/6">Pentru toate aceste construcții de sticlă securizată, echipa Glass Protect asigură următoarele tipuri de servicii:</h1>
+        <h1 class="text-2xl font-semibold w-4/6">Pentru toate aceste construcții de sticlă securizată, echipa Glass
+            Protect asigură următoarele tipuri de servicii:</h1>
         <x-benefit-cards />
     </div>
-
-
-
 </x-layout>
