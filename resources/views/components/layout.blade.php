@@ -34,7 +34,7 @@
             <div>
 
                 <a href="{{ route('home') }}">
-                    <img class="h-16" x-show="!darkMode" src="{{ asset('images/glass-protect-original.png') }}"
+                    <img class="h-16" src="{{ asset('images/glass-protect-original.png') }}"
                         alt="Light Theme Image">
                 </a>
             </div>
