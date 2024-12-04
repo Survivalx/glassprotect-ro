@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -7,8 +8,8 @@ Route::get('/', function () {
     return view('app');
 });
 
-Route::view('/' , 'app')->name('home');
-Route::view('/about' , 'pages.about')->name('page.about');
+Route::view('/', 'app')->name('home');
+Route::view('/about', 'pages.about')->name('page.about');
 Route::view('/products', 'pages.products')->name('page.products');
 Route::view('/projects', 'pages.projects');
 Route::view('/blog', 'pages.blog');
@@ -27,4 +28,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+Route::resource('products', ProductController::class);
