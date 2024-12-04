@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 Route::view('/', 'app')->name('home');
 Route::view('/about', 'pages.about')->name('page.about');
-Route::view('/products', 'pages.products')->name('page.products');
+// Route::view('/products', 'pages.products')->name('page.products');
 Route::view('/projects', 'pages.projects');
 Route::view('/blog', 'pages.blog');
 Route::view('/contact', 'pages.contact');

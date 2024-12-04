@@ -21,12 +21,12 @@
             </div>
             <div class="mb-4">
                 <label for="short_description" class="block text-gray-700 dark:text-gray-300">Short Description</label>
-                <input type="text" id="short-description" name="short-description"
+                <input type="text" id="short_description" name="short_description"
                     class="w-full p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
             </div>
             <div class="mb-4">
                 <label for="long_description" class="block text-gray-700 dark:text-gray-300">Long Description</label>
-                <textarea id="long-description" name="long-description"
+                <textarea id="long_description" name="long_description"
                     class="w-full p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
             </div>
             <div class="mb-4">

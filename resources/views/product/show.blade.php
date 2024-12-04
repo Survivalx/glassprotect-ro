@@ -16,9 +16,10 @@
         <div>
             <img class="w-9/12 rounded-lg" src={{ $product->image }} alt="">
         </div>
-        <div>
+        <div class="space-y-3">
             <h1 class="text-4xl font-thin">{{ $product->title }}</h1>
-            <h2>{{ $product->price_data }}</h2>
+            <h1 class="text-xl font-thin bg-slate-600 py-2 px-3 rounded-md w-fit">{{$product->price}}</h1>
+            <h2 class="text-md text-white/90">{{ $product->price_data }}</h2>
             <h3>{{ $product->short_description }}</h3>
             <h4>{{ $product->long_description }}</h4>
 
