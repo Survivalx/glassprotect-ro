@@ -7,22 +7,34 @@
                 @csrf
                 @method('DELETE')
                 <button type="submit"
-                    class="h-fit w-fit text-red-500 bg-red-100 border-red-100 border hover:border-red-300 py-2 px-3 rounded-md hover:bg-red-200 transition-all"
-                    onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
+                    class="h-fit w-fit text-red-500 bg-red-100 border-red-100 border hover:border-red-300 py-2 px-3 rounded-md hover:bg-red-200 transition-all">Delete</button>
+                {{-- onclick="return confirm('Are you sure you want to delete this product?')" --}}
             </form>
         </div>
     </div>
-    <div class="grid grid-cols-2 mt-20 items-start py-3 border-gray-800">
+    <div class="flex justify-evenly space-x-10 mt-20 items-start py-3 border-gray-800">
 
-            {{-- <img class="w-9/12 rounded-lg" src={{ $product->image }} alt=""> --}}
-            <img class="w-3/5 rounded-lg" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}">
+        {{-- <img class="w-9/12 rounded-lg" src={{ $product->image }} alt=""> --}}
+        <img class="w-fit rounded-lg" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}">
 
         <div class="space-y-3">
             <h1 class="text-4xl font-thin">{{ $product->title }}</h1>
-            <h1 class="text-xl font-thin bg-slate-600 py-2 px-3 rounded-md w-fit">{{$product->price}}</h1>
-            <h2 class="text-md text-white/90">{{ $product->price_data }}</h2>
-            <h3>{{ $product->short_description }}</h3>
-            <h4>{{ $product->long_description }}</h4>
+            <div class="border-b py-2 dark:border-white/10 w-fit">
+                <p class="text-xs font-thin dark:text-white/30 w-fit">Price</p>
+                <h1 class="text-xl font-thin dark:bg-slate-600 bg-slate-300 py-2 px-3 rounded-md w-fit">{{ $product->price }} €</h1>
+            </div>
+            <div class="flex flex-col">
+                <p class="text-xs font-thin dark:text-white/30">Price data</p>
+                <h2 class="font-extralight text-xl">{{ $product->price_data }}</h2>
+            </div>
+            <div class="flex flex-col">
+                <p class="text-xs font-thin dark:text-white/30">Short Description</p>
+                <h3 class="font-extralight text-xl">{{ $product->short_description }}</h3>
+            </div>
+            <div>
+                <p class="text-xs font-thin dark:text-white/30">Long Description</p>
+                <h4 class="font-extralight text-xl">{{ $product->long_description }}</h4>
+            </div>
 
         </div>
     </div>
