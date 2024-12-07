@@ -15,4 +15,9 @@
             Protect asigură următoarele tipuri de servicii:</h1>
         <x-benefit-cards />
     </div>
+
+    <div class="mt-28">
+        <h1 class="text-2xl font-semibold w-4/6">Proiecte recente</h1>
+
+    </div>
 </x-layout>

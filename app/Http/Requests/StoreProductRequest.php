@@ -23,11 +23,11 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'price' => 'required|string|max:255',
+            'price' => 'required|numeric|string|max:9999',
             'price_data' => 'nullable|string|max:255',
             'short_description' => 'nullable|string|max:255',
             'long_description' => 'nullable|string',
-            'image' => 'required|string|max:255',
+            'image' => 'required|max:10995',
         ];
     }
 }

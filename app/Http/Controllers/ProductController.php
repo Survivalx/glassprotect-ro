@@ -30,9 +30,17 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $product = Product::create($request->validated());
+        // Handle the file upload
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+        }
 
-        // return response()->json(['message' => 'Product created successfully', 'product' => $product], 201);
+        // Create the product with the validated data and the image path
+        $product = Product::create(array_merge(
+            $request->validated(),
+            ['image' => $imagePath]
+        ));
+
         return redirect()->route('products.index');
     }
 
@@ -57,11 +65,24 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreProductRequest $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
 
-        $product->update($request->validated());
+        // Check if a new image is uploaded
+        if ($request->hasFile('image')) {
+            // Handle the new image upload
+            $imagePath = $request->file('image')->store('images', 'public');
+        } else {
+            // Keep the current image if no new image is uploaded
+            $imagePath = $product->image;
+        }
+
+        // Update the product with the validated data and the image path
+        $product->update(array_merge(
+            $request->validated(),
+            ['image' => $imagePath]
+        ));
 
         return redirect()->route('products.show', $product->id)->with('success', 'Product updated successfully');
     }

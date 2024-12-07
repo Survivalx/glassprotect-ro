@@ -9,11 +9,33 @@
     <div class="w-11/12 border-x-gray-500  border-x-2 m-auto" x-data="themeSwitcher" x-init="init()">
         <header class="py-2 flex justify-between items-center">
             <div>
-
                 <a href="{{ route('home') }}">
-                    <img inert class="h-16" src="{{ asset('images/glass-protect-original.png') }}"
-                        alt="Light Theme Image">
+                    {{-- <img inert class="h-16" src="{{ asset('images/glass-protect-original.png') }}"
+                        alt="Light Theme Logo">
+                    <img inert class="h-16" src="{{ asset('images/gp-dark.png') }}" alt="Dark Theme Logo"> --}}
+                    <img id="themeImage" class="h-16" alt="Theme Logo">
                 </a>
+                <script>
+                    // Function to set the image based on the theme
+                    function setThemeImage() {
+                        const themeImage = document.getElementById('themeImage');
+                        const isDarkTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                        if (isDarkTheme) {
+                            themeImage.src = "{{ asset('images/gp-dark.png') }}";
+                            themeImage.alt = "Dark Theme Logo";
+                        } else {
+                            themeImage.src = "{{ asset('images/glass-protect-original.png') }}";
+                            themeImage.alt = "Light Theme Logo";
+                        }
+                    }
+
+                    // Set the image on initial load
+                    setThemeImage();
+
+                    // Listen for changes in the theme preference
+                    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeImage);
+                </script>
             </div>
             <div class="menu space-x-1 ">
                 <x-nav-link href="/about" :active="request()->is('about')">About Us</x-nav-link>
@@ -24,8 +46,8 @@
                 <x-nav-link href="/policies" :active="request()->is('policies')">GDPR & Policies</x-nav-link>
             </div>
             {{-- Dark Mode switch --}}
-            <button id="theme-toggle" class="p-2 bg-gray-200 dark:bg-gray-800 rounded">
-                <x-eos-light-mode id="theme-icon" class="w-4 h-4" />
+            <button id="theme-toggle" class="p-2 bg-gray-200 dark:bg-gray-800 rounded" alt='dark/light mode toggle button'>
+                <x-eos-light-mode id="theme-icon" class="w-4 h-4"  />
             </button>
         </header>
         <div>
@@ -34,7 +56,8 @@
         <footer class="mt-[1000px]">footer</footer>
     </div>
 </div>
-<script>
+{{-- <script>
+    Old fashioned dark mode toggle with button working (but without specific logotype)
     // DARK MODE TOGGLE BUTTON
     // DARK MODE TOGGLE BUTTON
     var themeToggleBtn = document.getElementById("theme-toggle");
@@ -65,6 +88,59 @@
                 localStorage.setItem("color-theme", "dark");
                 themeIcon.classList.add("dark-mode-icon");
             }
+        });
+    }
+</script> --}}
+
+
+<script>
+    // DARK MODE TOGGLE BUTTON
+    var themeToggleBtn = document.getElementById("theme-toggle");
+    var themeIcon = document.getElementById("theme-icon");
+    var themeImage = document.getElementById('themeImage');
+
+    function setThemeImage() {
+        const isDarkTheme = document.documentElement.classList.contains("dark");
+
+        if (isDarkTheme) {
+            themeImage.src = "{{ asset('images/gp-dark.png') }}";
+            themeImage.alt = "Dark Theme Logo";
+        } else {
+            themeImage.src = "{{ asset('images/glass-protect-original.png') }}";
+            themeImage.alt = "Light Theme Logo";
+        }
+    }
+
+    if (themeToggleBtn && themeIcon) {
+        // Initial theme check
+        if (
+            localStorage.getItem("color-theme") === "dark" ||
+            (!("color-theme" in localStorage) &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
+            themeIcon.classList.add("dark-mode-icon");
+        } else {
+            document.documentElement.classList.remove("dark");
+            themeIcon.classList.remove("dark-mode-icon");
+        }
+
+        // Set the initial theme image
+        setThemeImage();
+
+        // Toggle theme on button click
+        themeToggleBtn.addEventListener("click", function() {
+            if (document.documentElement.classList.contains("dark")) {
+                document.documentElement.classList.remove("dark");
+                localStorage.setItem("color-theme", "light");
+                themeIcon.classList.remove("dark-mode-icon");
+            } else {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("color-theme", "dark");
+                themeIcon.classList.add("dark-mode-icon");
+            }
+            // Update the theme image
+            setThemeImage();
         });
     }
 </script>

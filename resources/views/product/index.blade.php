@@ -32,8 +32,9 @@
                                 }
                             </style>
                         </div>
-                        <img class="w-full" src={{ $product->image }} alt="">
-                        <h1 class="text-xl font-semibold w-3/4 dark:text-black">{{ $product->title }}</h1>
+                        {{-- <img class="w-full" src={{ $product->image }} alt=""> --}}
+                        <img class="w-full" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}">
+                        <h1 class="text-xl font-semibold w-3/4 dark:text-white/85">{{ $product->title }}</h1>
                         <div class="flex items-start justify-start">
                             <h2 class="dark:text-black font-extralight text-2xl py-2 px-3 bg-blue-200 rounded-md mb-2">{{ $product->price }} € </h2>
                         </div>

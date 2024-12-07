@@ -12,10 +12,11 @@
             </form>
         </div>
     </div>
-    <div class="grid grid-cols-2 mt-20 items-start py-3 border-gray-800 justify-between m-auto">
-        <div>
-            <img class="w-9/12 rounded-lg" src={{ $product->image }} alt="">
-        </div>
+    <div class="grid grid-cols-2 mt-20 items-start py-3 border-gray-800">
+
+            {{-- <img class="w-9/12 rounded-lg" src={{ $product->image }} alt=""> --}}
+            <img class="w-3/5 rounded-lg" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}">
+
         <div class="space-y-3">
             <h1 class="text-4xl font-thin">{{ $product->title }}</h1>
             <h1 class="text-xl font-thin bg-slate-600 py-2 px-3 rounded-md w-fit">{{$product->price}}</h1>

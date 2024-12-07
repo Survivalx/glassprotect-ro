@@ -38,20 +38,31 @@
                         class="w-full p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">{{ $product->long_description }}</textarea>
                 </div>
                 <div class="mb-4">
-                    <label for="image" class="block text-gray-700 dark:text-gray-300">Image URL</label>
-                    <input type="text" id="image" name="image" value="{{ $product->image }}"
-                        class="w-full p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                        required>
+                    @if ($product->image)
+                        <div class="flex flex-col w-fit mb-4">
+                            <img class="w-36 rounded-md" src="{{ asset('storage/' . $product->image) }}"
+                                alt="{{ $product->title }}">
+                        </div>
+                    @endif
                 </div>
-                <div class="flex justify-end">
-                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Update
-                        Product</button>
-                </div>
-            </form>
-            <div class="mt-4">
-                <a href="{{ route('products.index') }}"
-                    class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700">Back to Products</a>
-            </div>
+
+                <div class="w-full h-[1px] bg-white/50 rounded-full my-4"></div>
+
+                {{-- <label for="image" class="block text-gray-700 dark:text-gray-300 text-nowrap">Upload a new
+                    image</label>
+                <input type="file" id="image" name="image"
+                    class="w-full p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <x-input-error :messages="$errors->get('image')" class="mt-2" /> --}}
+                    <div class="flex justify-end mt-4">
+                        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Update
+                            Product information</button>
+                    </div>
         </div>
+        </form>
+        <div class="mt-4">
+            <a href="{{ route('products.index') }}"
+                class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700">Back to Products</a>
+        </div>
+    </div>
     </div>
 </x-layout>
