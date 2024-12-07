@@ -13,24 +13,30 @@
             <div class="grid grid-cols-4 gap-6">
                 @foreach ($products as $product)
                     <a href={{ route('products.show', $product->id) }}
-                        class="flex cursor-pointer w-fit h-fit flex-col relative items-center gap-3 rounded-xl border px-3 py-3 border-gray-800 justify-between m-auto">
+                        class="flex cursor-pointer w-fit h-fit flex-col relative items-center gap-3 rounded-xl border overflow-hidden border-gray-800 justify-between m-auto">
                         <div id='hover'
-                            class="w-[100%] h-[100%] flex m-auto items-center justify-center overflow-hidden top-0 rounded-xl absolute  transition-all bg-blue-900/30">
-                            <div id='hover-effect' class="h-full w-full transition-all text-black/0 text-white flex items-center justify-center align-middle">
-                                <x-carbon-view class="h-10 w-10 text-center self-center justify-center bg-blue-300 p-2 rounded-full"/>
+                            class="w-[100%] h-[100%] flex m-auto items-center justify-center overflow-hidden top-0 rounded-xl absolute  transition-all bg-black/50">
+                            <div id='hover-effect'
+                                class="h-full w-full transition-all text-black/0 text-white flex items-center justify-center align-middle">
+                                <x-carbon-view
+                                    class="h-10 w-10 text-center self-center justify-center bg-blue-500 shadow-blue-500 shadow-sm p-2 rounded-full" />
                             </div>
                             <style>
                                 #hover {
                                     opacity: 0;
                                     transition: .25s ease-in-out;
                                 }
+
                                 #hover:hover {
                                     opacity: 1;
                                 }
                             </style>
                         </div>
-                        <img class="w-80 rounded-lg" src={{ $product->image }} alt="">
-                        <h1 class="text-xl font-thin">{{ $product->title }}</h1>
+                        <img class="w-full" src={{ $product->image }} alt="">
+                        <h1 class="text-xl font-semibold w-3/4 dark:text-black">{{ $product->title }}</h1>
+                        <div class="flex items-start justify-start">
+                            <h2 class="dark:text-black font-extralight text-2xl py-2 px-3 bg-blue-200 rounded-md mb-2">{{ $product->price }} € </h2>
+                        </div>
                     </a>
                 @endforeach
             </div>
