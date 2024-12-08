@@ -13,7 +13,7 @@ class Product extends Model
     protected $guarded = [];
 
 
-    public function productSpecs()
+    public function specs()
     {
         return $this->hasMany(ProductSpecs::class);
     }

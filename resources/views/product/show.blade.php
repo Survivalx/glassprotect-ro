@@ -21,7 +21,8 @@
             <h1 class="text-4xl font-thin">{{ $product->title }}</h1>
             <div class="border-b py-2 dark:border-white/10 w-fit">
                 <p class="text-xs font-thin dark:text-white/30 w-fit">Price</p>
-                <h1 class="text-xl font-thin dark:bg-slate-600 bg-slate-300 py-2 px-3 rounded-md w-fit">{{ $product->price }} €</h1>
+                <h1 class="text-xl font-thin dark:bg-slate-600 bg-slate-300 py-2 px-3 rounded-md w-fit">
+                    {{ $product->price }} €</h1>
             </div>
             <div class="flex flex-col">
                 <p class="text-xs font-thin dark:text-white/30">Price data</p>
@@ -35,7 +36,55 @@
                 <p class="text-xs font-thin dark:text-white/30">Long Description</p>
                 <h4 class="font-extralight text-xl">{{ $product->long_description }}</h4>
             </div>
+        </div>
+    </div>
+    <div
+        class="w-3/5 dark:border-gray-700 border rounded-md m-auto mt-20 dark:bg-gray-800 p-10 shadow-md dark:shadow-none">
+        <h1 class="text-3xl font-extralight mb-3 dark:text-white/70">Product Specification</h1>
+        <div class="flex flex-col items-center">
+            @foreach ($productSpecs as $spec)
+                <div class="w-full">
+                    <div class="flex border-b w-full justify-between pb-2 mb-1">
+                        <h1 class="text-xl dark:text-white/60 font-thin">{{ $spec->specKey }}</h1>
+                        <h1 class="text-xl font-semibold">{{ $spec->specValue }}</h1>
+                    </div>
 
+                    <form class="relative right-10 bottom-12" class="pb-2 ml-2"
+                        action="{{ route('products.specs.destroy', $spec->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="bg-red-0 text-red-500 hover:text-red-700 transition-all p-1 rounded-full"
+                            type="submit"><x-clarity-remove-line class="w-8" /></button>
+                    </form>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+    {{-- Custom specs here is the create level --}}
+    <div>
+        <h1 class="text-2xl w-fit m-auto mt-20">Add Product specifications type and value</h1>
+        <div class="w-1/2 m-auto">
+            <form action="{{ route('products.specs.store', $product->id) }}" method="POST">
+                @csrf
+                <div class="mb-4">
+                    <label for="specKey" class="block text-gray-700 dark:text-gray-300/80">Specification Type</label>
+                    <input type="text" id="specKey" name="specKey" autofocus
+                        class="w-full p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <x-input-error :messages="$errors->get('specKey')" class="mt-2" />
+                </div>
+                <div class="mb-4">
+                    <label for="specValue" class="block text-gray-700 dark:text-gray-300/80">Specification Value</label>
+                    <input type="text" id="specValue" name="specValue"
+                        class="w-full p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <x-input-error :messages="$errors->get('specValue')" class="mt-2" />
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit"
+                        class="transition-all px-4 py-2 bg-blue-700  text-white rounded hover:bg-blue-800">Add
+                        specification</button>
+                </div>
+            </form>
         </div>
     </div>
 </x-layout>
