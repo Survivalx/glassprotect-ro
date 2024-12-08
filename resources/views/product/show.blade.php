@@ -34,7 +34,7 @@
             </div>
             <div>
                 <p class="text-xs font-thin dark:text-white/30">Long Description</p>
-                <h4 class="font-extralight text-xl">{{ $product->long_description }}</h4>
+                <h4 class="font-extralight text-md">{{ $product->long_description }}</h4>
             </div>
         </div>
     </div>
