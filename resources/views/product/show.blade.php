@@ -43,7 +43,7 @@
         <h1 class="text-3xl font-extralight mb-3 dark:text-white/70">Product Specification</h1>
         <div class="flex flex-col items-center">
             @foreach ($productSpecs as $spec)
-                <div class="w-full">
+                <div class="w-full my-2">
                     <div class="flex border-b w-full justify-between pb-2 mb-1">
                         <h1 class="text-xl dark:text-white/60 font-thin">{{ $spec->specKey }}</h1>
                         <h1 class="text-xl font-semibold">{{ $spec->specValue }}</h1>
