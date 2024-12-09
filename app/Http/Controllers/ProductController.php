@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -22,6 +24,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        if (Auth::guest()) {
+            return view('components.wrong');
+        }
         return view('product.create');
     }
 
@@ -49,8 +54,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-    //     $product = Product::findOrFail($product->id);
-    //     return view('product.show', compact('product'));
+        //     $product = Product::findOrFail($product->id);
+        //     return view('product.show', compact('product'));
 
 
         $productSpecs = $product->specs; // Assuming you have a relationship defined in the Product model
