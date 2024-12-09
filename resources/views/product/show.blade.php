@@ -1,4 +1,5 @@
 <x-layout>
+
     <div>
         @auth {{-- Admin can access --}}
             <div class="flex justify-end items-center gap-3">
@@ -14,6 +15,7 @@
             </div>
         @endauth
     </div>
+
     <div class="flex justify-evenly space-x-10 mt-20 items-start py-3 border-gray-800">
 
         {{-- <img class="w-9/12 rounded-lg" src={{ $product->image }} alt=""> --}}
@@ -47,11 +49,12 @@
 
 
             @if (count($productSpecs) < 1)
-                <h1 class="text-white/60">...No specifications yet...</h1>
+                <h1 class="dark:text-white/60 text-black/60">...No specifications yet...</h1>
             @else
                 @foreach ($productSpecs as $spec)
                     <div class="w-full my-2">
-                        <div class="flex border-b border-dashed dark:border-white/20 border-black/20 w-full justify-between pb-2 mb-1">
+                        <div
+                            class="flex border-b border-dashed dark:border-white/20 border-black/20 w-full justify-between pb-2 mb-1">
                             <h1 class="text-xl dark:text-white/60 font-thin">{{ $spec->specKey }}</h1>
                             <h1 class="text-xl font-semibold">{{ $spec->specValue }}</h1>
                         </div>
