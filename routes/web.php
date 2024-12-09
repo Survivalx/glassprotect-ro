@@ -20,7 +20,7 @@ Route::view('/policies', 'pages.policies');
 
 // default routes middleware breeze auth
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('pages.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

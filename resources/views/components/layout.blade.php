@@ -44,11 +44,28 @@
                 <x-nav-link href="/blog" :active="request()->is('blog')">Blog</x-nav-link>
                 <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
                 <x-nav-link href="/policies" :active="request()->is('policies')">GDPR & Policies</x-nav-link>
+                @auth
+                    <x-nav-link href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-nav-link>
+
+
+                @endauth
             </div>
             {{-- Dark Mode switch --}}
-            <button id="theme-toggle" class="p-2 bg-gray-200 dark:bg-gray-800 rounded" alt='dark/light mode toggle button'>
-                <x-eos-light-mode id="theme-icon" class="w-4 h-4"  />
-            </button>
+            <div class="flex space-x-4 items-center">
+                @auth
+                    <form class="" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <button class="bg-gray-500 text-white py-0.5 px-2 rounded flex items-center gap-2 text-sm"
+                            type="submit">Log out <x-tabler-logout class="w-4" /></button>
+                    </form>
+                @endauth
+                <button id="theme-toggle"
+                    class="p-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 rounded transition-all"
+                    alt='dark/light mode toggle button'>
+                    <x-eos-light-mode id="theme-icon" class="w-4 h-4" />
+                </button>
+            </div>
         </header>
         <div>
             {{ $slot }}
