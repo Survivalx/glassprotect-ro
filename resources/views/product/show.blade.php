@@ -79,7 +79,7 @@
                     @csrf
                     <div class="mb-4">
                         <label for="specKey" class="block text-gray-700 dark:text-gray-300/80">Specification Type</label>
-                        <input type="text" id="specKey" name="specKey" autofocus
+                        <input type="text" id="specKey" name="specKey"
                             class="w-full p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                         <x-input-error :messages="$errors->get('specKey')" class="mt-2" />
                     </div>

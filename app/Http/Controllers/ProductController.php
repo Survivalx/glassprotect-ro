@@ -67,6 +67,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::guest()) {
+            return view('components.wrong');
+        }
         $product = Product::findOrFail($id);
         return view('product.edit', compact('product'));
     }
