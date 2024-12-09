@@ -41,7 +41,7 @@
         </div>
     </div>
     <div
-        class="w-3/5 dark:border-gray-700 border rounded-md m-auto mt-20 dark:bg-gray-800 p-10 shadow-md dark:shadow-none">
+        class="w-4/5 dark:border-gray-700 border rounded-md m-auto mt-20 dark:bg-gray-800 p-10 shadow-md dark:shadow-none">
         <h1 class="text-3xl font-extralight mb-3 dark:text-white/70">Product Specification</h1>
         <div class="flex flex-col items-center">
 
@@ -51,7 +51,7 @@
             @else
                 @foreach ($productSpecs as $spec)
                     <div class="w-full my-2">
-                        <div class="flex border-b w-full justify-between pb-2 mb-1">
+                        <div class="flex border-b border-dashed dark:border-white/20 border-black/20 w-full justify-between pb-2 mb-1">
                             <h1 class="text-xl dark:text-white/60 font-thin">{{ $spec->specKey }}</h1>
                             <h1 class="text-xl font-semibold">{{ $spec->specValue }}</h1>
                         </div>
