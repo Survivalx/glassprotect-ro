@@ -20,6 +20,18 @@ class ProductController extends Controller
     }
 
     /**
+     * Display a latest 4 products on main page
+     */
+    public function recent()
+    {
+        // orderBy('created_at', 'desc')->
+
+        $recent = Product::take(4)->get();
+        // dd($recent);
+        return view('app', ['recent' => $recent]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

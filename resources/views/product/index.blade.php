@@ -15,7 +15,7 @@
                     <a href={{ route('products.show', $product->id) }}
                         class="flex cursor-pointer w-fit h-fit flex-col relative items-center gap-3 rounded-xl border overflow-hidden border-gray-800 justify-between m-auto">
                         <div id='hover'
-                            class="w-[100%] h-[100%] flex m-auto items-center justify-center overflow-hidden top-0 rounded-xl absolute  transition-all bg-black/50">
+                            class="w-[100%] h-[100%] flex m-auto items-center justify-center overflow-hidden top-0 rounded-xl absolute  transition-all bg-indigo-900/20">
                             <div id='hover-effect'
                                 class="h-full w-full transition-all text-black/0 text-white flex items-center justify-center align-middle">
                                 <x-carbon-view
