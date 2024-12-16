@@ -70,9 +70,47 @@
         <div>
             {{ $slot }}
         </div>
-        <footer class="mt-[1000px]">footer</footer>
     </div>
+    <footer class="mt-20 w-full bg-blue-100 dark:bg-blue-white/15 pb-2">
+        <div id='containings' class="w-11/12 m-auto py-10 flex items-start justify-between">
+            <img id="themeImage2" src="{{ asset('images/glass-protect-original.png') }}" class="h-16 "
+                alt="Theme Logo">
+            <div class=" m-auto">
+                <h1 class="text-sm w-fit text-black/50">Adress</h1>
+                <h1 class=" font-light text-lg dark:text-black">str. Învățător Dumitru Sima-Șetraru nr.171, sat Țuțora, com. <br>
+                    Țuțora, jud. Iași, România</h1>
+            </div>
+            <div class="w-fit m-auto">
+                <h1 class="text-sm w-fit text-black/50">Contact</h1>
+                <h1 class="font-light text-lg dark:text-black">+40-755-966-555
+
+                </h1>
+            </div>
+        </div>
+        <div id='copyright' class="w-fit m-auto">
+            <h1 class="text-md text-black/50">Copyright. © glassprotect.ro - All rights are reserved. 2024</h1>
+        </div>
+    </footer>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {{-- <script>
     Old fashioned dark mode toggle with button working (but without specific logotype)
     // DARK MODE TOGGLE BUTTON
