@@ -26,7 +26,7 @@ class ProductController extends Controller
     {
         // orderBy('created_at', 'desc')->
 
-        $recent = Product::take(4)->get();
+        $recent = Product::orderBy('created_at', 'desc')->take(4)->get();
         // dd($recent);
         return view('app', ['recent' => $recent]);
     }

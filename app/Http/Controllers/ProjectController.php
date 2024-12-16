@@ -13,8 +13,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $project = Project::all();
-        return view('project.index', compact('project'));
+        $projects = Project::all();
+        return view('project.index', compact('projects'));
     }
 
     /**
@@ -30,7 +30,18 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = $image->getClientOriginalName();
+            $path = public_path('/project-images');
+            $image->move($path, $imageName);
+            Project::create([
+                'title' => $request->title,
+                'image' => '/project-images/' . $imageName,
+            ]);
+            return redirect()->route('projects.index');
+        }
     }
 
     /**
@@ -38,7 +49,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        Project::findOrFail($project['id']);
+        return view('project.show', compact('project'));
     }
 
     /**

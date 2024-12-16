@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSpecsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 Route::resource('products', ProductController::class);
+Route::resource('projects', ProjectController::class);
 
 Route::post('/products/{product}/specs', [ProductSpecsController::class, 'store'])->name('products.specs.store');
 
