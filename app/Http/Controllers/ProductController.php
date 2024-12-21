@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\ProductSpecs;
 
 class ProductController extends Controller
 {
@@ -15,9 +16,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(12); // Adjust 'relatedModel' to your actual relationship if any
         return view('product.index', compact('products'));
     }
+
 
     /**
      * Display a latest 4 products on main page
