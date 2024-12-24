@@ -71,7 +71,7 @@
             {{ $slot }}
         </div>
     </div>
-    <footer class="mt-20 w-full bg-blue-100 dark:bg-blue-white/15 pb-2">
+    <footer class="mt-[300px] w-full bg-blue-100 dark:bg-blue-white/15 pb-2">
         <div id='containings' class="w-11/12 m-auto py-10 flex items-start justify-between">
             <img id="themeImage2" src="{{ asset('images/glass-protect-original.png') }}" class="h-16 "
                 alt="Theme Logo">
