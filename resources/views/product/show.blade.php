@@ -2,7 +2,7 @@
 
     <div>
         @auth {{-- Admin can access --}}
-            <div class="flex justify-end items-center gap-3">
+            <div class="flex justify-end items-center gap-3 mt-10">
                 <a class="text-sky-500 h-fit w-fit bg-sky-100 hover:bg-sky-200 border border-sky-100 hover:border-sky-300 dark:hover:bg-sky-700 dark:transition-all dark:bg-sky-600 dark:text-sky-100 dark:border-sky-500 trasition-all py-2 px-3 rounded-md"
                     href={{ route('products.edit', $product->id) }}>Edit</a>
                 <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="inline">
