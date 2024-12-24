@@ -36,10 +36,10 @@
                     <x-input-error :messages="$errors->get('long_description')" class="mt-2" />
                 </div>
                 <div class="mb-4">
-                    <label for="image" class="block text-gray-700 dark:text-gray-300">Image URL</label>
-                    <input type="file" id="image" name="image"
+                    <label for="images" class="block text-gray-700 dark:text-gray-300">Image URL</label>
+                    <input type="file" id="images" name="images[]" multiple
                         class="w-full p-2 border border-gray-300 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    <x-input-error :messages="$errors->get('image')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('images')" class="mt-2" />
                 </div>
                 <div class="flex justify-end">
                     <button type="submit"

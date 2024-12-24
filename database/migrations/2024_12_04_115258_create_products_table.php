@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('price_data')->nullable();
             $table->string('short_description')->nullable();
             $table->string('long_description')->nullable();
-            $table->string('image');
+            $table->string('images');
             $table->timestamps();
         });
     }

@@ -10,16 +10,21 @@
             <h1 class="text-4xl font-thin">View All Our Products</h1>
         </div>
         <div class="w-full">
-            <div class="grid grid-cols-4 gap-6">
+            <div class="grid grid-cols-3 gap-6">
                 @foreach ($products as $product)
                     <a href={{ route('products.show', $product->id) }}
-                        class="flex cursor-pointer w-fit h-fit flex-col relative items-center gap-3 rounded-xl border overflow-hidden border-gray-800 justify-between m-auto">
+                        class="flex cursor-pointer w-96 h-96 flex-col relative items-center gap-3 rounded-xl border overflow-hidden border-gray-400 justify-between m-auto">
                         <div id='hover'
-                            class="w-[100%] h-[100%] flex m-auto items-center justify-center overflow-hidden top-0 rounded-xl absolute  transition-all bg-indigo-900/20">
+                            class="w-[100%] h-[100%] flex m-auto items-center justify-center overflow-hidden top-0 rounded-xl absolute  transition-all bg-blue-600/10">
                             <div id='hover-effect'
-                                class="h-full w-full transition-all text-black/0 text-white flex items-center justify-center align-middle">
-                                <x-carbon-view
-                                    class="h-10 w-10 text-center self-center justify-center bg-blue-500 shadow-blue-500 shadow-sm p-2 rounded-full" />
+                                class="h-full w-full  transition-all text-black/0 text-white flex items-center justify-center align-middle">
+                                <div class="bg-slate-800/95 flex gap-1 rounded items-center py-1 px-2">
+                                    <x-carbon-view
+                                        class="h-6 w-6 text-center self-center justify-center  shadow-sm rounded-full" />
+                                    <h2>
+                                        View product
+                                    </h2>
+                                </div>
                             </div>
                             <style>
                                 #hover {
@@ -32,11 +37,26 @@
                                 }
                             </style>
                         </div>
-                        {{-- <img class="w-full" src={{ $product->image }} alt=""> --}}
-                        <img class="w-full" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}">
-                        <h1 class="text-xl font-semibold w-3/4 dark:text-white/85">{{ $product->title }}</h1>
-                        <div class="flex items-start justify-start">
-                            <h2 class="dark:text-black font-extralight text-2xl py-2 px-3 bg-blue-200 rounded-md mb-2">{{ $product->price }} € </h2>
+                        @php
+                            $imagePaths = explode(',', $product->images);
+                            $firstImagePath = $imagePaths[0];
+                        @endphp
+
+                        <img class="w-full h-full object-cover" src="{{ asset('storage/' . $firstImagePath) }}"
+                            alt="{{ $product->title }}">
+
+                        {{-- <img class="w-full h-full object-cover" src="{{ asset('storage/' . $product->image) }}" --}}
+                        {{-- alt="{{ $product->title }}"> --}}
+
+
+                        <div
+                            class="flex items-center py-3 bg-white w-4/5 justify-between bottom-4 px-5 rounded-md shadow-lg border border-gray-100 absolute m-auto">
+                            <div class="container w-3/5">
+                                <h1 class="text-md font-semibold h-auto dark:text-black/70 break-words">{{ $product->title }}</h1>
+                            </div>
+                            <h2
+                                class="dark:text-black w-fit m-auto font-extralight text-lg py-2 px-3 bg-blue-200 rounded-md">
+                                {{ $product->price }} € </h2>
                         </div>
                     </a>
                 @endforeach

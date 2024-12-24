@@ -18,7 +18,6 @@
 
     <div class="mt-28">
         <h1 class="text-2xl font-semibold w-4/6">Proiecte recente</h1>
-
     </div>
     <div class="mt-28">
         <h1 class="text-2xl font-semibold w-4/6 mb-3">Produsele noastre</h1>

@@ -27,7 +27,7 @@ class UpdateProductRequest extends FormRequest
             'price_data' => 'nullable|string|max:255',
             'short_description' => 'nullable|string|max:255',
             'long_description' => 'nullable|string',
-            'image' => 'nullable|max:12048', // Validate new image file
+            'images' => '', // Validate new image file
         ];
 
     }

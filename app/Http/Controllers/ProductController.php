@@ -49,20 +49,26 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        // Handle the file upload
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
+        $imagePaths = [];
+
+        // Handle the file uploads
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imagePaths[] = $image->store('images', 'public');
+            }
         }
 
-        // Create the product with the validated data and the image path
+        // Concatenate the image paths into a single string
+        $imagePathsString = implode(',', $imagePaths);
+
+        // Create the product with the validated data and the image paths string
         $product = Product::create(array_merge(
             $request->validated(),
-            ['image' => $imagePath]
+            ['images' => $imagePathsString]
         ));
 
         return redirect()->route('products.index');
     }
-
     /**
      * Display the specified resource.
      */
@@ -95,20 +101,8 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        // Check if a new image is uploaded
-        if ($request->hasFile('image')) {
-            // Handle the new image upload
-            $imagePath = $request->file('image')->store('images', 'public');
-        } else {
-            // Keep the current image if no new image is uploaded
-            $imagePath = $product->image;
-        }
-
-        // Update the product with the validated data and the image path
-        $product->update(array_merge(
-            $request->validated(),
-            ['image' => $imagePath]
-        ));
+        // Update the product with the validated data without changing the images
+        $product->update($request->validated());
 
         return redirect()->route('products.show', $product->id)->with('success', 'Product updated successfully');
     }

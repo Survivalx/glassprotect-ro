@@ -16,30 +16,111 @@
         @endauth
     </div>
 
-    <div class="flex justify-evenly space-x-10 mt-20 items-start py-3 border-gray-800">
+    <div class="flex m-auto justify-around mt-20 items-start py-3 border-gray-800">
+        <div class="slider rounded-xl border m-auto w-[600px]">
+            <div class="slides m-auto">
+                @php
+                    $imagePaths = explode(',', $product->images);
+                @endphp
 
-        {{-- <img class="w-9/12 rounded-lg" src={{ $product->image }} alt=""> --}}
-        <img class="w-fit rounded-lg" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}">
-
-        <div class="space-y-3">
-            <h1 class="text-4xl font-thin">{{ $product->title }}</h1>
+                @foreach ($imagePaths as $imagePath)
+                    <div class="slide">
+                        <img class="object-cover flex m-auto" src="{{ asset('storage/' . $imagePath) }}"
+                            alt="{{ $product->title }}">
+                    </div>
+                @endforeach
+            </div>
+            <button class="prev hover:bg-slate-600/80 bg-gray-400/80 px-2 py-2 transition-all"
+                onclick="moveSlide(-1)"><x-heroicon-o-chevron-left class="w-6" /></button>
+            <button class="next hover:bg-slate-600/80 bg-gray-400/80 px-2 py-2 transition-all"
+                onclick="moveSlide(1)"><x-heroicon-o-chevron-right class="w-6" /></button>
+        </div>
+        <div class="space-y-3 flex flex-col items-start justify-items-start w-1/2 m-auto">
+            <h1 class="text-4xl w-fit text-wrap break-words font-thin">{{ $product->title }}</h1>
             <div class="border-b py-2 dark:border-white/10 w-fit">
                 <p class="text-xs font-thin dark:text-white/30 w-fit">Price</p>
                 <h1 class="text-xl font-thin dark:bg-slate-600 bg-slate-300 py-2 px-3 rounded-md w-fit">
                     {{ $product->price }} €</h1>
             </div>
-            <div class="flex flex-col">
-                <p class="text-xs font-thin dark:text-white/30">Price data</p>
-                <h2 class="font-extralight text-xl">{{ $product->price_data }}</h2>
+            <div class="flex flex-col w-fit">
+                <p class="text-xs w-fit font-thin dark:text-white/30">Price Data</p>
+                <h2 class="font-extralight w-fit text-xl">{{ $product->price_data }}</h2>
             </div>
             <div class="flex flex-col">
-                <p class="text-xs font-thin dark:text-white/30">Short Description</p>
-                <h3 class="font-extralight text-xl">{{ $product->short_description }}</h3>
+                <p class="text-xs w-fit font-thin dark:text-white/30">Short Description</p>
+                <h3 class="font-extralight w-fit text-xl">{{ $product->short_description }}</h3>
             </div>
-            <div>
-                <p class="text-xs font-thin dark:text-white/30">Long Description</p>
-                <h4 class="font-extralight text-md">{{ $product->long_description }}</h4>
-            </div>
+
+        </div>
+
+        <script>
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                const slides = document.querySelectorAll('.slide');
+                if (index >= slides.length) {
+                    currentSlide = 0;
+                } else if (index < 0) {
+                    currentSlide = slides.length - 1;
+                } else {
+                    currentSlide = index;
+                }
+                const offset = -currentSlide * 100;
+                document.querySelector('.slides').style.transform = `translateX(${offset}%)`;
+            }
+
+            function moveSlide(step) {
+                showSlide(currentSlide + step);
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                showSlide(currentSlide);
+            });
+        </script>
+
+        <style>
+            .slider {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .slides {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
+
+            .slide {
+                min-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .prev,
+            .next {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                color: white;
+                border: none;
+                border-radius: 100px;
+                cursor: pointer;
+            }
+
+            .prev {
+                left: 10px;
+            }
+
+            .next {
+                right: 10px;
+            }
+        </style>
+    </div>
+
+
+
+    <div class="">
+        <div class="w-3/5 m-auto my-20 border-white/15 border px-10 py-5 rounded-md">
+            <p class="text-xs font-thin dark:text-white/30">Long Description</p>
+            <h4 class="font-extralight break-words text-md">{{ $product->long_description }}</h4>
         </div>
     </div>
     <div
