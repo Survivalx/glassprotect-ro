@@ -6,8 +6,8 @@
     <link rel="shortcut icon" href={{ asset('images/whitegpro.svg') }} type="image/x-icon">
 </head>
 <div class="dark:bg-gray-900 transition-all dark:text-white bg-white">
-    <div class="w-11/12 border-x-gray-500  border-x-2 m-auto" x-data="themeSwitcher" x-init="init()">
-        <header class="py-2 flex justify-between items-center">
+    <div class="w-11/12  m-auto" x-data="themeSwitcher" x-init="init()">
+        <header class="py-2 flex bg-slate-800 justify-between items-center">
             <div>
                 <a href="{{ route('home') }}">
                     {{-- <img inert class="h-16" src="{{ asset('images/glass-protect-original.png') }}"
